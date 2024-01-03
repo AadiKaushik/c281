@@ -1,0 +1,133 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.3126161704592161 -0.02602018997591478 0.9495230801202422 3.0530605194805616
+  position 1.101571489064398 -0.03499572153108217 0.9683012813813768
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  rotation 0 -1 0 -5.307179586466759e-06
+  wallThickness 0.05
+  wallHeight 0.3
+}
+PointLight {
+  attenuation 0 0 1
+  location 0.6 0 0
+}
+DEF SLOPE Solid {
+  translation 0 0 0.15
+  rotation 0 1 0 0.4
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry DEF BOX Box {
+        size 0.8 0.2 0.02
+      }
+    }
+  ]
+}
+Robot {
+  translation 0.287862 -0.0227727 0.248882
+  rotation 0.13963596051067667 -0.6107018272923261 -0.779451779569509 3.10643
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+          name "right wheel model"
+          consumptionFactor 17
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        children [
+          DEF WHEEL Transform {
+            translation 0.36 0.034 0.034
+            rotation -2.227910650369145e-05 0.2588210755547542 -0.9659252819718104 -0.9
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    Transform {
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+      }
+      device [
+        RotationalMotor {
+          name "left wheel model"
+          consumptionFactor 17
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        children [
+          DEF WHEEL Transform {
+            translation 0.36 0.034 0.034
+            rotation -2.227910650369145e-05 0.2588210755547542 -0.9659252819718104 -0.9
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+    Altimeter {
+      rotation 0 1 0 4.6928e-06
+      children [
+        Transform {
+          translation 0.349941 0.0401683 0.0815
+          rotation 0.9351132545406678 0.2505650682045725 0.25056006820321153 1.63783
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0 1 0
+                roughness 1
+                metalness 0
+              }
+              geometry DEF BODY Cylinder {
+                height 0.08
+                radius 0.045
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  contactMaterial "body"
+}
